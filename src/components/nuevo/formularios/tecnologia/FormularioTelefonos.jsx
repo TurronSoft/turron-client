@@ -18,11 +18,9 @@ const GrupoInput = styled.div`
   ${tw`flex flex-col mb-5`};
 `
 
-const FormularioTelefonos = () => {
-  const [datos, setDatos] = useState("")
+const FormularioTelefonos = ({ obtenerDatos }) => {
   const handleChange = e => {
-    setDatos({
-      ...datos,
+    obtenerDatos({
       [e.target.name]: e.target.value,
     })
   }

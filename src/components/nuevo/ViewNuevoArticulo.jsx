@@ -14,6 +14,13 @@ import UploadArea from "./formularios/tecnologia/UploadArea"
 
 const ViewNuevoArticulo = () => {
   const [datos, setDatos] = useState("")
+  const obtenerDatos = data => {
+    setDatos({
+      ...datos,
+      data,
+    })
+  }
+
   return (
     <form>
       <div className="mt-10 flex justify-between">
@@ -54,8 +61,8 @@ const ViewNuevoArticulo = () => {
           </nav>
         </div>
         <div className="col-span-12 xl:col-span-7">
-          <FormularioTelefonos />
-          <UploadArea />
+          <FormularioTelefonos obtenerDatos={obtenerDatos} />
+          <UploadArea obtenerDatos={obtenerDatos} />
         </div>
         <div className="col-span-2">
           <span>Opciones</span>

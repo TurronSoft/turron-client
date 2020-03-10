@@ -1,12 +1,11 @@
-import React from "react"
+import React, { useState } from "react"
 import FileDrop from "react-file-drop"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faUpload } from "@fortawesome/free-solid-svg-icons"
 
-const UploadArea = () => {
+const UploadArea = ({ obtenerDatos }) => {
   const handleDrop = (files, event) => {
-    console.log(files)
-    console.log(event)
+    obtenerDatos(files)
   }
   return (
     <div>

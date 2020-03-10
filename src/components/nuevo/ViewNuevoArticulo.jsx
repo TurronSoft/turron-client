@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import axios from "axios"
 import {
   faMapSigns,
   faCar,
@@ -20,9 +21,26 @@ const ViewNuevoArticulo = () => {
       data,
     })
   }
+  const handleSubmit = async e => {
+    e.preventDefault()
+    const config = {
+      headers: { "content-type": "multipart/form-data" },
+    }
+    const formData = new FormData()
 
+    for (const file of datos.data) {
+      formData.append("image", file)
+    }
+
+    const respuesta = await axios.post(
+      "http://localhost:9000/upload-images",
+      formData,
+      config
+    )
+    console.log(respuesta)
+  }
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="mt-10 flex justify-between">
         <Link to="/" className="text-secondary-400">
           <FontAwesomeIcon className="mr-3" icon={faChevronCircleLeft} />
